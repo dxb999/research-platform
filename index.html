@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>منصة البحوث التقنية</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#">الرئيسية</a></li>
+            <li><a href="#">البحوث</a></li>
+            <li><a href="#">أضف بحثاً</a></li>
+            <li><a href="#">التصنيفات</a></li>
+            <li><a href="#">لجنة التقييم</a></li>
+            <li><a href="#">الدعم الفني</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <h1>منصة البحوث التقنية</h1>
+        <p>تمكين وتوثيق المعرفة التقنية بين موظفي قسم تقنية المعلومات</p>
+    </header>
+
+    <section>
+        <input type="text" placeholder="ابحث عن بحث أو كلمة مفتاحية..." />
+        <button>بحث</button>
+    </section>
+
+    <section>
+        <h2>أحدث البحوث</h2>
+        <div class="research-card">
+            <h3>تحسين أداء الشبكات باستخدام الذكاء الاصطناعي</h3>
+            <p>دراسة لتطبيق خوارزميات تعلم الآلة لتحسين سرعة الشبكة وتقليل التوقفات</p>
+            <button>عرض البحث</button>
+        </div>
+        <div class="research-card">
+            <h3>أمن المعلومات في بيئة العمل</h3>
+            <p>تحليل شامل للتهديدات الإلكترونية الشائعة والحلول المقترحة</p>
+            <button>عرض البحث</button>
+        </div>
+    </section>
+
+    <section>
+        <h2>إضافة بحث جديد</h2>
+        <form>
+            <label>عنوان البحث:</label>
+            <input type="text" name="title" required><br>
+
+            <label>وصف مختصر:</label>
+            <textarea name="summary" required></textarea><br>
+
+            <label>المجال:</label>
+            <select name="category">
+                <option>الأمن السيبراني</option>
+                <option>الذكاء الاصطناعي</option>
+                <option>الشبكات</option>
+                <option>النظم والتطبيقات</option>
+            </select><br>
+
+            <label>تحميل الملف:</label>
+            <input type="file" name="document" accept=".pdf,.docx"><br><br>
+
+            <button type="submit">إرسال البحث</button>
+        </form>
+    </section>
+</body>
+</html>

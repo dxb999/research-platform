@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>قائمة البحوث</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="index.html">الرئيسية</a></li>
+      <li><a href="submit.html">أضف بحثاً</a></li>
+      <li><a href="browse.html">جميع البحوث</a></li>
+      <li><a href="categories.html">التصنيفات</a></li>
+      <li><a href="committee.html">لجنة التقييم</a></li>
+      <li><a href="support.html">الدعم الفني</a></li>
+
+      <li><a href="index.html">الرئيسية</a></li>
+      <li><a href="submit.html">أضف بحثاً</a></li>
+      <li><a href="browse.html">قائمة البحوث</a></li>
+      <li><a href="categories.html">التصنيفات</a></li>
+      <li><a href="committee.html">لجنة التقييم</a></li>
+      <li><a href="support.html">الدعم الفني</a></li>
+    </ul>
+  </nav>
+
+  <section>
+    <h2>قائمة البحوث المسجلة</h2>
+    <div id="researchList"></div>
+  </section>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
+    import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-database.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBz8zGEdxSgU5OHtf1AFxFh16otxFEBzc4",
+      authDomain: "research-platform-9a093.firebaseapp.com",
+      projectId: "research-platform-9a093",
+      storageBucket: "research-platform-9a093.firebasestorage.app",
+      messagingSenderId: "152484198596",
+      appId: "1:152484198596:web:2d5883f05ea6e0ad4d3191",
+      measurementId: "G-10QEYJYFES",
+      databaseURL: "https://research-platform-9a093-default-rtdb.firebaseio.com"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+
+    const researchList = document.getElementById("researchList");
+
+    onValue(ref(db, "researches/"), (snapshot) => {
+      researchList.innerHTML = "";
+      const data = snapshot.val();
+      if (data) {
+        Object.values(data).reverse().forEach(item => {
+          const card = document.createElement("div");
+          card.className = "research-card";
+          card.innerHTML = `
+            <h3>${item.title}</h3>
+            <p><strong>الباحث:</strong> ${item.author}</p>
+            <p><strong>المجال:</strong> ${item.category}</p>
+            <p>${item.summary}</p>
+            <a href="${item.fileUrl}" target="_blank"><button>عرض الملف</button></a>
+          `;
+          researchList.appendChild(card);
+        });
+      } else {
+        researchList.innerHTML = "<p>لا توجد بحوث مضافة حتى الآن.</p>";
+      }
+    });
+  </script>
+</body>
+</html>

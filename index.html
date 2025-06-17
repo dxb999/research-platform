@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -10,7 +9,6 @@
     <nav>
         <ul>
             <li><a href="#">الرئيسية</a></li>
-            <li><a href="#">البحوث</a></li>
             <li><a href="#">أضف بحثاً</a></li>
             <li><a href="#">التصنيفات</a></li>
             <li><a href="#">لجنة التقييم</a></li>
@@ -20,18 +18,17 @@
 
     <header>
         <h1>منصة البحوث التقنية</h1>
-        <p>تمكين وتوثيق المعرفة التقنية بين موظفي قسم تقنية المعلومات</p>
+        <p>تم توثيق المعرفة التقنية الفائقة بين موظفي تقنية المعلومات</p>
+        <section>
+            <input type="text" placeholder="ابحث عن بحث أو كلمة مفتاحية..." />
+            <button>بحث</button>
+        </section>
     </header>
-
-    <section>
-        <input type="text" placeholder="ابحث عن بحث أو كلمة مفتاحية..." />
-        <button>بحث</button>
-    </section>
 
     <section>
         <h2>أحدث البحوث</h2>
         <div class="research-card">
-            <h3>تحسين أداء الشبكات باستخدام الذكاء الاصطناعي</h3>
+            <h3>تحسين الشبكات باستخدام الذكاء الاصطناعي</h3>
             <p>دراسة لتطبيق خوارزميات تعلم الآلة لتحسين سرعة الشبكة وتقليل التوقفات</p>
             <button>عرض البحث</button>
         </div>
@@ -46,10 +43,10 @@
         <h2>إضافة بحث جديد</h2>
         <form>
             <label>عنوان البحث:</label>
-            <input type="text" name="title" required><br>
+            <input type="text" name="title" required>
 
             <label>وصف مختصر:</label>
-            <textarea name="summary" required></textarea><br>
+            <textarea name="summary" required></textarea>
 
             <label>المجال:</label>
             <select name="category">
@@ -57,10 +54,10 @@
                 <option>الذكاء الاصطناعي</option>
                 <option>الشبكات</option>
                 <option>النظم والتطبيقات</option>
-            </select><br>
+            </select>
 
             <label>تحميل الملف:</label>
-            <input type="file" name="document" accept=".pdf,.docx"><br><br>
+            <input type="file" name="document" accept=".pdf,.docx">
 
             <button type="submit">إرسال البحث</button>
         </form>

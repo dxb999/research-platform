@@ -9,35 +9,37 @@ body {
   padding: 0;
 }
 
+/* القائمة العلوية بتدرج Banner */
 .simple-navbar {
-  background-color: #ffffff;
-  border-bottom: 2px solid #005b96;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  background: linear-gradient(to left, #002b5c, #005b96);
+  padding: 15px 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
 .simple-navbar ul {
   list-style: none;
   display: flex;
   justify-content: center;
-  gap: 25px;
+  gap: 30px;
   margin: 0;
-  padding: 15px 0;
+  padding: 0;
 }
 
 .simple-navbar li a {
-  color: #005b96;
+  color: white;
   text-decoration: none;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 17px;
   transition: color 0.3s ease, border-bottom 0.3s ease;
   padding-bottom: 5px;
 }
 
 .simple-navbar li a:hover {
-  color: #002b5c;
-  border-bottom: 2px solid #002b5c;
+  color: #ffd700;
+  border-bottom: 2px solid #ffd700;
 }
 
+/* الترويسة */
 header {
   background: linear-gradient(to left, #002b5c, #005b96);
   color: white;
@@ -85,6 +87,7 @@ button:hover {
   background-color: #003f6f;
 }
 
+/* بطاقات البحوث */
 .research-card {
   background: white;
   padding: 20px;

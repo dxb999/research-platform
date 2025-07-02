@@ -58,7 +58,9 @@
       researchList.innerHTML = "";
       const data = snapshot.val();
       if (data) {
-        Object.values(data).reverse().forEach(item => {
+        const items = Object.values(data).reverse();
+        const latestThree = items.slice(0, 3);
+        latestThree.forEach(item => {
           const card = document.createElement("div");
           card.className = "research-card";
           card.innerHTML = `

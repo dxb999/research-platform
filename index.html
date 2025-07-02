@@ -6,7 +6,19 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <nav class="simple-navbar">
+
+  <!-- الهيدر الأزرق -->
+  <header class="hero-header">
+    <h1>منصة البحوث التقنية</h1>
+    <p>تم توثيق المعرفة التقنية الفائقة بين موظفي تقنية المعلومات</p>
+    <section class="search-section">
+      <input type="text" placeholder="ابحث عن بحث أو كلمة مفتاحية..." />
+      <button>بحث</button>
+    </section>
+  </header>
+
+  <!-- القائمة الرئيسية بخلفية بيضاء أسفل الهيدر -->
+  <nav class="main-navbar">
     <ul>
       <li><a href="index.html">الرئيسية</a></li>
       <li><a href="submit.html">أضف بحثاً</a></li>
@@ -18,15 +30,7 @@
     </ul>
   </nav>
 
-  <header>
-    <h1>منصة البحوث التقنية</h1>
-    <p>تمكين وتوثيق المعرفة التقنية بين موظفي قسم تقنية المعلومات</p>
-    <section>
-      <input type="text" placeholder="ابحث عن بحث أو كلمة مفتاحية..." />
-      <button>بحث</button>
-    </section>
-  </header>
-
+  <!-- قسم أحدث البحوث -->
   <section>
     <h2>أحدث البحوث</h2>
     <div id="researchList">
@@ -34,6 +38,7 @@
     </div>
   </section>
 
+  <!-- خريطة الموقع في الفوتر -->
   <footer class="site-footer">
     <div class="footer-container">
       <h3>خريطة الموقع</h3>
@@ -50,6 +55,7 @@
     </div>
   </footer>
 
+  <!-- سكريبت قراءة الأبحاث من Firebase -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
     import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-database.js";

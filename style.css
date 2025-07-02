@@ -27,6 +27,19 @@ body {
   margin-top: 0;
 }
 
+.header-image {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.header-image img {
+  max-width: 400px;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
 .search-section {
   margin-top: 20px;
 }

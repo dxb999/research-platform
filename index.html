@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -7,23 +6,21 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <nav>
+  <nav class="simple-navbar">
     <ul>
       <li><a href="index.html">الرئيسية</a></li>
-<li><a href="submit.html">أضف بحثاً</a></li>
-<li><a href="categories.html">التصنيفات</a></li>
-<li><a href="committee.html">لجنة التقييم</a></li>
-<li><a href="support.html">الدعم الفني</a></li>
+      <li><a href="submit.html">أضف بحثاً</a></li>
+      <li><a href="browse.html">جميع البحوث</a></li>
+      <li><a href="categories.html">التصنيفات</a></li>
+      <li><a href="committee.html">لجنة التقييم</a></li>
+      <li><a href="support.html">الدعم الفني</a></li>
       <li><a href="research.html">عرض بحث</a></li>
-      <li><a href="#">التصنيفات</a></li>
-      <li><a href="#">لجنة التقييم</a></li>
-      <li><a href="#">الدعم الفني</a></li>
     </ul>
   </nav>
 
   <header>
     <h1>منصة البحوث التقنية</h1>
-    <p>تم توثيق المعرفة التقنية الفائقة بين موظفي تقنية المعلومات</p>
+    <p>تمكين وتوثيق المعرفة التقنية بين موظفي قسم تقنية المعلومات</p>
     <section>
       <input type="text" placeholder="ابحث عن بحث أو كلمة مفتاحية..." />
       <button>بحث</button>
@@ -32,40 +29,51 @@
 
   <section>
     <h2>أحدث البحوث</h2>
-    <div class="research-card">
-      <h3>تحسين الشبكات باستخدام الذكاء الاصطناعي</h3>
-      <p>دراسة لتطبيق خوارزميات تعلم الآلة لتحسين سرعة الشبكة وتقليل التوقفات</p>
-      <a href="research.html"><button>عرض البحث</button></a>
-    </div>
-    <div class="research-card">
-      <h3>أمن المعلومات في بيئة العمل</h3>
-      <p>تحليل شامل للتهديدات الإلكترونية الشائعة والحلول المقترحة</p>
-      <a href="research.html"><button>عرض البحث</button></a>
+    <div id="researchList">
+      <p>جاري تحميل البحوث...</p>
     </div>
   </section>
 
-  <section>
-    <h2>إضافة بحث جديد</h2>
-    <form>
-      <label>عنوان البحث:</label>
-      <input type="text" name="title" required>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
+    import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-database.js";
 
-      <label>وصف مختصر:</label>
-      <textarea name="summary" required></textarea>
+    const firebaseConfig = {
+      apiKey: "AIzaSyBz8zGEdxSgU5OHtf1AFxFh16otxFEBzc4",
+      authDomain: "research-platform-9a093.firebaseapp.com",
+      projectId: "research-platform-9a093",
+      storageBucket: "research-platform-9a093.firebasestorage.app",
+      messagingSenderId: "152484198596",
+      appId: "1:152484198596:web:2d5883f05ea6e0ad4d3191",
+      measurementId: "G-10QEYJYFES",
+      databaseURL: "https://research-platform-9a093-default-rtdb.firebaseio.com"
+    };
 
-      <label>المجال:</label>
-      <select name="category">
-        <option>الأمن السيبراني</option>
-        <option>الذكاء الاصطناعي</option>
-        <option>الشبكات</option>
-        <option>النظم والتطبيقات</option>
-      </select>
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
 
-      <label>تحميل الملف:</label>
-      <input type="file" name="document" accept=".pdf,.docx">
+    const researchList = document.getElementById("researchList");
 
-      <button type="submit">إرسال البحث</button>
-    </form>
-  </section>
+    onValue(ref(db, "researches/"), (snapshot) => {
+      researchList.innerHTML = "";
+      const data = snapshot.val();
+      if (data) {
+        Object.values(data).reverse().forEach(item => {
+          const card = document.createElement("div");
+          card.className = "research-card";
+          card.innerHTML = `
+            <h3>${item.title}</h3>
+            <p><strong>الباحث:</strong> ${item.author}</p>
+            <p><strong>المجال:</strong> ${item.category}</p>
+            <p>${item.summary}</p>
+            <a href="${item.fileUrl}" target="_blank"><button>عرض الملف</button></a>
+          `;
+          researchList.appendChild(card);
+        });
+      } else {
+        researchList.innerHTML = "<p>لا توجد بحوث مضافة حتى الآن.</p>";
+      }
+    });
+  </script>
 </body>
 </html>
